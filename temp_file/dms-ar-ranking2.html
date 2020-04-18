@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Komodo Notarynode election 2020</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152646601-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-152646601-1');
+</script>
+<link rel="stylesheet" href="/static/vote2020/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/static/vote2020/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="/static/vote2020/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="/static/vote2020/css/vertical-layout-dark/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+  <style>
+.c3-chart-arc .c3-gauge-value{fill:#0acf97}.recvo{border-bottom:1px solid #2a2c40}#button{display:inline-block;background-color:#333;width:50px;height:50px;text-align:center;border-radius:4px;position:fixed;bottom:30px;right:30px;transition:background-color .3s,opacity .5s,visibility .5s;opacity:0;visibility:hidden;z-index:1000}#button:hover{cursor:pointer;background-color:#ff9800}#button:active{background-color:#555}#button.show{opacity:1;visibility:visible}.maindiv{display:inline-block;line-height:1;padding:2px;font-size:40px;text-align:center}.maindiv span{display:block;font-size:10px;color:#fff}#days{font-size:15px;color:#db4844}#hours{font-size:15px;color:#f07c22}#minutes{font-size:15px;color:#f6da74}#seconds{font-size:15px;color:#abcd58}
+.time_agob {
+      border-bottom: 1px dotted #6a5fff;
+      cursor: pointer;
+}
+.vote_count {
+      font-size: 1.275rem;
+}
+.vote_pos {
+      font-size: 11px;
+      position: relative;
+bottom: 13px;
+}
+.c3-chart-arcs .c3-chart-arcs-background {
+    fill: #8e8686;
+    stroke: none;
+}
+
+.c3-chart-arc path {
+    stroke: #808080;
+}
+</style>
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/"><img src="/static/logo2020.png" alt="Komodo Vote 2020"/></a>
+        <a class="navbar-brand brand-logo-mini" href="/"><img src="/static/logo2020.png" alt="komodo Vote 2020"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end justify-content-lg-start">
+        <ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-refresh text-success icon-md"></i> <a class="text-light" href="/recentvotes">Recent Votes</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-trophy text-warning icon-md"></i> <a class="text-light" href="/stats/richlist">Rich List</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-chevron-right text-danger icon-md"></i> <a class="text-light" href="/#explorer">Explorer</a></button>
+        </ul><ul class="navbar-nav">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-account text-info icon-md"></i> <a class="text-light" href="/re-elected">Re-elected</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+<li class="nav-item dropdown">
+<button type="button" class="btn btn-inverse-primary btn-fw dropdown-toggle text-light"
+id="notificationDropdown" data-toggle="dropdown" aria-expanded="false">
+<i class="mdi mdi-link text-success icon-md"></i>More...</button>
+ <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list bg-primary" aria-labelledby="notificationDropdown">
+                        <h3 class="dropdown-header text-warning">More</h3>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-light" href="/#explorer"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Explorer</a>
+                        <a class="dropdown-item text-light" href="/stats/richlist2"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Candidate Rich list</a>
+                        <div class="dropdown-divider"></div>
+                        <h3 class="dropdown-header text-warning">Links</h3>
+                        <a class="dropdown-item text-light" href="https://vote.dexstats.info/" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Dexstats Vote Stats</a>
+                        <a class="dropdown-item text-light" href="https://dexstats.info/testnet.php" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Testnet</a>
+                        <a class="dropdown-item text-light" href="https://vote.kmdexplorer.io/" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Explorer 1</a>
+                        <a class="dropdown-item text-light" href="https://vote2020.explorer.dexstats.info/" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Explorer 2</a>
+                        <a class="dropdown-item text-light" href="https://github.com/KomodoPlatform/dPoW/blob/dev/doc/bible.md" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Notary Node Bible</a>
+                        <a class="dropdown-item text-light" href="https://github.com/KomodoPlatform/NotaryNodes/tree/master/season4/candidates" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> NN Github</a>
+                      </div>
+<!--<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <a class="dropdown-item">
+                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                </p>
+                <span class="badge badge-pill badge-warning float-right">View all</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-information mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium">Application Error</h6>
+                  <p class="font-weight-light small-text mb-0">
+                    Just now
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="mdi mdi-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium">Settings</h6>
+                  <p class="font-weight-light small-text mb-0">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="mdi mdi-account-box mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium">New user registration</h6>
+                  <p class="font-weight-light small-text mb-0">
+                    2 days ago
+                  </p>
+                </div>
+              </a>
+            </div>-->
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <form method="post" action="/search">
+              <li class="nav-item nav-search d-none d-lg-block">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="search">
+                      <i class="mdi mdi-magnify"></i>
+                    </span>
+                  </div>
+                  <input type="text" name="q" size="36" class="form-control" placeholder="search by block height/hash, txid, address" aria-label="search" aria-describedby="search">
+                </div>
+              </li>
+         </form>
+        </ul>
+      </div>
+    </nav>
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+    <div class="container-fluid page-body-wrapper">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+           <li><div id="chart"></div><div class="text-center">Total Votes: 119,242,816<br/>Votes Cast: 10,327,951<br/><div id="timer" class="text-center">
+  <div class="maindiv" id="days"></div>
+  <div class="maindiv" id="hours"></div>
+  <div class="maindiv"id="minutes"></div>
+  <div class="maindiv" id="seconds"></div>
+                </div></div></li>        <div class="dropdown-divider"></div>
+          <li class="nav-item"><h4 class="card-title text-primary pl-3 text-center"><i class="mdi mdi-vote text-primary icon-md"></i>Region Stats</h4>
+          </li>
+           <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#AR" class="text-success">AR</a>
+                        <p class="text-muted">3,117,251</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                     <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#EU" class="text-info">EU</a>
+                        <p class="text-muted">2,805,983</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                     <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#NA" class="text-danger">NA</a>
+                        <p class="text-muted">2,810,568</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                     <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#SH" class="text-warning">SH</a>
+                        <p class="text-muted">1,594,149</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                               <li class="nav-item">        <div id="rchart"></div>
+                       <div class="recvo"></div>
+          </li>
+        </ul>
+      </nav>
+<a id="button"><i class="mdi mdi-chevron-up text-light icon-md"></i></a>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div id="EU" class="row">
+                      <div class="col-6">
+              <div class="card">
+                <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                  <h3 class="card-title text-info">Europe (EU)</h3>
+                  <span class="text-secondary">8 spots</span>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                           <th>Address</th>
+                          <th>Votes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+<tr>
+                          <td>
+                          1
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/decker_EU">decker <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHTDBTqeMyoEEdRZWWXfL6TZzF7LAi8jNd"></i> <a href="/a/RHTDBTqeMyoEEdRZWWXfL6TZzF7LAi8jNd" target="_blank">RHTDB...i8jNd</a>
+                          </td>
+                            <td>
+                            <span class="text-success">515911</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          2
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/mihailo_EU">mihailo <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RFxQPGQ5v2nnDM4rHvc3qaRmRyfPQroxhR"></i> <a href="/a/RFxQPGQ5v2nnDM4rHvc3qaRmRyfPQroxhR" target="_blank">RFxQP...roxhR</a>
+                          </td>
+                            <td>
+                            <span class="text-success">512117</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          3
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/cipi_EU">cipi <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="REs2WViKi4ZUKthC4dUgRBrocRet4TczS5"></i> <a href="/a/REs2WViKi4ZUKthC4dUgRBrocRet4TczS5" target="_blank">REs2W...TczS5</a>
+                          </td>
+                            <td>
+                            <span class="text-success">502600</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          4
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/madmax_EU">madmax <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RPxhABCq6zDQcZzsqFZWF7WePvELCHVp4s"></i> <a href="/a/RPxhABCq6zDQcZzsqFZWF7WePvELCHVp4s" target="_blank">RPxhA...HVp4s</a>
+                          </td>
+                            <td>
+                            <span class="text-success">328456</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          5
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/oszy_EU">oszy <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RVoteNNv5rDWH8iMVkjhnJVZJUr7UNtMd3"></i> <a href="/a/RVoteNNv5rDWH8iMVkjhnJVZJUr7UNtMd3" target="_blank">RVote...NtMd3</a>
+                          </td>
+                            <td>
+                            <span class="text-success">109807</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          6
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/node-9_EU">node-9 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RCKC2LrT18hymTjajK1BaqxGKV76NnfHTo"></i> <a href="/a/RCKC2LrT18hymTjajK1BaqxGKV76NnfHTo" target="_blank">RCKC2...nfHTo</a>
+                          </td>
+                            <td>
+                            <span class="text-success">104312</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          7
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/naezith_EU">naezith <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RKioHMjm52LNyAvr3Tj1ZJLydgNUo1FNBq"></i> <a href="/a/RKioHMjm52LNyAvr3Tj1ZJLydgNUo1FNBq" target="_blank">RKioH...1FNBq</a>
+                          </td>
+                            <td>
+                            <span class="text-success">101082</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          8
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/cmaurice_EU">cmaurice <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RFkYwfiyXNgVdde6Q27g6EB4Pm4hcpVc3H"></i> <a href="/a/RFkYwfiyXNgVdde6Q27g6EB4Pm4hcpVc3H" target="_blank">RFkYw...pVc3H</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100157</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          9
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/powerwolf_EU">powerwolf <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHhqzvWutYuhoQyv2f8WUJv6yhCunjM9zH"></i> <a href="/a/RHhqzvWutYuhoQyv2f8WUJv6yhCunjM9zH" target="_blank">RHhqz...jM9zH</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100078</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          10
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/k-drop_EU">k-drop <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RMaoykv539M86KYUwjZcDb7mXbypW5k9nf"></i> <a href="/a/RMaoykv539M86KYUwjZcDb7mXbypW5k9nf" target="_blank">RMaoy...5k9nf</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100055</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          11
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/slyris_EU">slyris <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RDASWS5PSHruahEzc1w9Mc2vmvwTNHq827"></i> <a href="/a/RDASWS5PSHruahEzc1w9Mc2vmvwTNHq827" target="_blank">RDASW...Hq827</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          12
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/fuego_EU">fuego <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RTmfDN4UUj1e33wr5GxQu8WFVFK6MqPpsp"></i> <a href="/a/RTmfDN4UUj1e33wr5GxQu8WFVFK6MqPpsp" target="_blank">RTmfD...qPpsp</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          13
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/cryptoeconomy_EU">cryptoeconomy <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RLLMtPkB9kC48HgCGbdu9EiqYgE4aVp7Gz"></i> <a href="/a/RLLMtPkB9kC48HgCGbdu9EiqYgE4aVp7Gz" target="_blank">RLLMt...Vp7Gz</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          14
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/soldat_EU">soldat <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RXp516twdbr15YBj79HrXfifid4PiRVZhi"></i> <a href="/a/RXp516twdbr15YBj79HrXfifid4PiRVZhi" target="_blank">RXp51...RVZhi</a>
+                          </td>
+                            <td>
+                            <span class="text-success">30288</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          15
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/jeezy_EU">jeezy <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RJEEZYnTHkWrNNaivfruqhVTXuXQSaGLDp"></i> <a href="/a/RJEEZYnTHkWrNNaivfruqhVTXuXQSaGLDp" target="_blank">RJEEZ...aGLDp</a>
+                          </td>
+                            <td>
+                            <span class="text-success">1015</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          16
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/unl0v3d_EU">unl0v3d <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHPXZHY3YSQa7uWJdouvkCmcyZkshGN8K2"></i> <a href="/a/RHPXZHY3YSQa7uWJdouvkCmcyZkshGN8K2" target="_blank">RHPXZ...GN8K2</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          17
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/chuckforis_EU">chuckforis <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RA2n7hkJE4QZsF4btNZtoHajtJPZ9raf7Q"></i> <a href="/a/RA2n7hkJE4QZsF4btNZtoHajtJPZ9raf7Q" target="_blank">RA2n7...raf7Q</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          18
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/starfleet_EU">starfleet <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RG7NBA3CKz3fqu5Dji3vKeR3HdQ4gY681B"></i> <a href="/a/RG7NBA3CKz3fqu5Dji3vKeR3HdQ4gY681B" target="_blank">RG7NB...Y681B</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          19
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/swisscertifiers_EU">swisscertifiers <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RELW38itbV6kwLMyepqf81M6McbqudBkbL"></i> <a href="/a/RELW38itbV6kwLMyepqf81M6McbqudBkbL" target="_blank">RELW3...dBkbL</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr>                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        <div id="AR" class="col-6">
+              <div class="card">
+                <div class="card-body">
+                                <div class="d-flex align-items-start justify-content-between">
+                  <h3 class="card-title text-success">Asia-Russia (AR)</h3>
+                  <span class="text-secondary">7 spots</span>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                           <th>Address</th>
+                          <th>Votes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+<tr>
+                          <td>
+                          1
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/smdmitry_AR">smdmitry <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHW4eJRCSgpop2Xv5eTUUzVW2aqei9WBSv"></i> <a href="/a/RHW4eJRCSgpop2Xv5eTUUzVW2aqei9WBSv" target="_blank">RHW4e...9WBSv</a>
+                          </td>
+                            <td>
+                            <span class="text-success">761600</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          2
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/marmarachain_AR">marmarachain <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RBzq4oEBGqrhwJ6om1AGv8JC5NVM6ywcYK"></i> <a href="/a/RBzq4oEBGqrhwJ6om1AGv8JC5NVM6ywcYK" target="_blank">RBzq4...ywcYK</a>
+                          </td>
+                            <td>
+                            <span class="text-success">569427</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          3
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/chmex_AR">chmex <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RCHMexS677JDTtAvCmYyorwkXLmDjLUVVS"></i> <a href="/a/RCHMexS677JDTtAvCmYyorwkXLmDjLUVVS" target="_blank">RCHMe...LUVVS</a>
+                          </td>
+                            <td>
+                            <span class="text-success">515915</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          4
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/dudezmobi_AR">dudezmobi <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RA7VoAW811sZS6CPaM3CwS4VyNyLzmNcKy"></i> <a href="/a/RA7VoAW811sZS6CPaM3CwS4VyNyLzmNcKy" target="_blank">RA7Vo...mNcKy</a>
+                          </td>
+                            <td>
+                            <span class="text-success">273720</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          5
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/cipi_AR">cipi <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RPmn49RyrLzoSHxiXxhuchbcBu8nj6PxYu"></i> <a href="/a/RPmn49RyrLzoSHxiXxhuchbcBu8nj6PxYu" target="_blank">RPmn4...6PxYu</a>
+                          </td>
+                            <td>
+                            <span class="text-success">253436</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          6
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/tonyl_AR">tonyl <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHhQQ2kpoE5kPGEmyhNc8AcZyvBDAMC4Y4"></i> <a href="/a/RHhQQ2kpoE5kPGEmyhNc8AcZyvBDAMC4Y4" target="_blank">RHhQQ...MC4Y4</a>
+                          </td>
+                            <td>
+                            <span class="text-success">252196</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          7
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/strob_AR">strob <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RStrobARDwHKBDntCa2Ko6oi91n4YMpgSB"></i> <a href="/a/RStrobARDwHKBDntCa2Ko6oi91n4YMpgSB" target="_blank">RStro...MpgSB</a>
+                          </td>
+                            <td>
+                            <span class="text-success">170362</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          8
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/mrlynch_AR">mrlynch <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RC2pD9ietgA27QMhgv8nn5pFo2v7HfmesF"></i> <a href="/a/RC2pD9ietgA27QMhgv8nn5pFo2v7HfmesF" target="_blank">RC2pD...fmesF</a>
+                          </td>
+                            <td>
+                            <span class="text-success">154090</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          9
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/artempikulin_AR">artempikulin <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RPiqJrUxDTZK2zfRLYc8dBDHxeEzMdPZoz"></i> <a href="/a/RPiqJrUxDTZK2zfRLYc8dBDHxeEzMdPZoz" target="_blank">RPiqJ...dPZoz</a>
+                          </td>
+                            <td>
+                            <span class="text-success">106481</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          10
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/zatjum_AR">zatjum <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RKf96jJB861terNPb623v9F3PSj7uBbhxv"></i> <a href="/a/RKf96jJB861terNPb623v9F3PSj7uBbhxv" target="_blank">RKf96...Bbhxv</a>
+                          </td>
+                            <td>
+                            <span class="text-success">60000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          11
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/kbtworks_AR">kbtworks <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHQMEwV6zGALeFpWXJ7Lk5JGWgybtVRoJT"></i> <a href="/a/RHQMEwV6zGALeFpWXJ7Lk5JGWgybtVRoJT" target="_blank">RHQME...VRoJT</a>
+                          </td>
+                            <td>
+                            <span class="text-success">19</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          12
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/etszombi_AR">etszombi <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RX1DiFJTrz86jEVJh4JzDJeVz9DQRxWPjG"></i> <a href="/a/RX1DiFJTrz86jEVJh4JzDJeVz9DQRxWPjG" target="_blank">RX1Di...xWPjG</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr>
+                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="row mt-5">
+                        <div id="NA" class="col-6">
+              <div class="card">
+                <div class="card-body">
+                                <div class="d-flex align-items-start justify-content-between">
+                  <h3 class="card-title text-danger">North America (NA)</h3>
+                  <span class="text-secondary">7 spots</span>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                           <th>Address</th>
+                          <th>Votes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+<tr>
+                          <td>
+                          1
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/alien_NA">alien <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RCaRTEnGFdpcuvGou6QPQG1tLJS9tZQUB9"></i> <a href="/a/RCaRTEnGFdpcuvGou6QPQG1tLJS9tZQUB9" target="_blank">RCaRT...ZQUB9</a>
+                          </td>
+                            <td>
+                            <span class="text-success">505794</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          2
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/karasugoi_NA">karasugoi <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RNDY7E4afV1YS7NHPi5RtGEZ2eo7H47sKF"></i> <a href="/a/RNDY7E4afV1YS7NHPi5RtGEZ2eo7H47sKF" target="_blank">RNDY7...47sKF</a>
+                          </td>
+                            <td>
+                            <span class="text-success">222100</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          3
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/draeth_NA">draeth <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RAuP2RCk7RdZ2HcgiAHrnxFL6NiysKWcKV"></i> <a href="/a/RAuP2RCk7RdZ2HcgiAHrnxFL6NiysKWcKV" target="_blank">RAuP2...KWcKV</a>
+                          </td>
+                            <td>
+                            <span class="text-success">218966</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          4
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/pbca26_NA">pbca26 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RVktxLT6aHoFc2mHCUHVLXKgvazka3BhZ2"></i> <a href="/a/RVktxLT6aHoFc2mHCUHVLXKgvazka3BhZ2" target="_blank">RVktx...3BhZ2</a>
+                          </td>
+                            <td>
+                            <span class="text-success">214837</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          5
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/phba2061_NA">phba2061 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RPhbA2o61JM4ufrwJiAJ7SMmbR7cvbns4e"></i> <a href="/a/RPhbA2o61JM4ufrwJiAJ7SMmbR7cvbns4e" target="_blank">RPhbA...bns4e</a>
+                          </td>
+                            <td>
+                            <span class="text-success">205120</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          6
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/greer_NA">greer <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RUfLAuqJxjdnyiq4UajGhWmtzt3PMWAiUG"></i> <a href="/a/RUfLAuqJxjdnyiq4UajGhWmtzt3PMWAiUG" target="_blank">RUfLA...WAiUG</a>
+                          </td>
+                            <td>
+                            <span class="text-success">203665</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          7
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/daemonfox_NA">daemonfox <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RDAEmonF9avm7xau2pYWf3UamgHNXrkzpt"></i> <a href="/a/RDAEmonF9avm7xau2pYWf3UamgHNXrkzpt" target="_blank">RDAEm...rkzpt</a>
+                          </td>
+                            <td>
+                            <span class="text-success">202326</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          8
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/dragonhound_NA">dragonhound <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RW9cpJ2w4ovUB2JA5HisAFtjasGs2dyaD2"></i> <a href="/a/RW9cpJ2w4ovUB2JA5HisAFtjasGs2dyaD2" target="_blank">RW9cp...dyaD2</a>
+                          </td>
+                            <td>
+                            <span class="text-success">201610</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          9
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/lootz_NA">lootz <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="REbnTZUHeYiqx6uNqGsUan3Usp9RJy5kjU"></i> <a href="/a/REbnTZUHeYiqx6uNqGsUan3Usp9RJy5kjU" target="_blank">REbnT...y5kjU</a>
+                          </td>
+                            <td>
+                            <span class="text-success">201456</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          10
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/sapphire_NA">sapphire <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RAyYbRv6kKjk9m4r267pR9bGY9Fk1yuJ5R"></i> <a href="/a/RAyYbRv6kKjk9m4r267pR9bGY9Fk1yuJ5R" target="_blank">RAyYb...yuJ5R</a>
+                          </td>
+                            <td>
+                            <span class="text-success">200035</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          11
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/gtm_NA">gtm <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RNmhemcCpDhGi93XZRcELuiZMJrK1ZeTd8"></i> <a href="/a/RNmhemcCpDhGi93XZRcELuiZMJrK1ZeTd8" target="_blank">RNmhe...ZeTd8</a>
+                          </td>
+                            <td>
+                            <span class="text-success">200003</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          12
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/d0ct0r_NA">d0ct0r <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RCnh5egj3QCiYkMEuWbUiLJs4tPrNedUtQ"></i> <a href="/a/RCnh5egj3QCiYkMEuWbUiLJs4tPrNedUtQ" target="_blank">RCnh5...edUtQ</a>
+                          </td>
+                            <td>
+                            <span class="text-success">200000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          13
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/computergenie_NA">computergenie <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RVoteCGxquRNeHWGiHC6vxzpXBodKt3P88"></i> <a href="/a/RVoteCGxquRNeHWGiHC6vxzpXBodKt3P88" target="_blank">RVote...t3P88</a>
+                          </td>
+                            <td>
+                            <span class="text-success">19377</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          14
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/chainzilla_NA">chainzilla <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RAfJvh7cGEYavic3NSZhg9QERGpJ3KfTV5"></i> <a href="/a/RAfJvh7cGEYavic3NSZhg9QERGpJ3KfTV5" target="_blank">RAfJv...KfTV5</a>
+                          </td>
+                            <td>
+                            <span class="text-success">15276</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          15
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/nodeone_NA">nodeone <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RNjeQcneBWgkPFk1stynJWN9gnNLpgBzud"></i> <a href="/a/RNjeQcneBWgkPFk1stynJWN9gnNLpgBzud" target="_blank">RNjeQ...gBzud</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          16
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/crackers_NA">crackers <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RN3fYpxTuv6gcBAfwC2dqNppeWSV7QJvCa"></i> <a href="/a/RN3fYpxTuv6gcBAfwC2dqNppeWSV7QJvCa" target="_blank">RN3fY...QJvCa</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr>                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        <div id="SH" class="col-6">
+              <div class="card">
+                <div class="card-body">
+                                <div class="d-flex align-items-start justify-content-between">
+                  <h3 class="card-title text-warning">Southern Hemisphere (SH)</h3>
+                  <span class="text-secondary">8 spots</span>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                           <th>Address</th>
+                          <th>Votes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+<tr>
+                          <td>
+                          1
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/pungocloud_SH">pungocloud <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RY9hDWKxZJeHcu6KxeKDy5cSYVMQHUnT44"></i> <a href="/a/RY9hDWKxZJeHcu6KxeKDy5cSYVMQHUnT44" target="_blank">RY9hD...UnT44</a>
+                          </td>
+                            <td>
+                            <span class="text-success">253014</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          2
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/mylo_SH">mylo <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RAjXLB2nDfy72pT5JEhwXhe9xeUgZ5Wq4D"></i> <a href="/a/RAjXLB2nDfy72pT5JEhwXhe9xeUgZ5Wq4D" target="_blank">RAjXL...5Wq4D</a>
+                          </td>
+                            <td>
+                            <span class="text-success">252000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          3
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/mcrypt_SH">mcrypt <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RS9JeJJQq6QRyNvQtRnsnBWLASN6W92bVi"></i> <a href="/a/RS9JeJJQq6QRyNvQtRnsnBWLASN6W92bVi" target="_blank">RS9Je...92bVi</a>
+                          </td>
+                            <td>
+                            <span class="text-success">201400</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          4
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/phm87_SH">phm87 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RFmvveVYVRPo8v85J5u3Yd3PgrzSrHZP4S"></i> <a href="/a/RFmvveVYVRPo8v85J5u3Yd3PgrzSrHZP4S" target="_blank">RFmvv...HZP4S</a>
+                          </td>
+                            <td>
+                            <span class="text-success">141035</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          5
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/gcharang_SH">gcharang <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RTWgfK47pbhyHWcqEMQUyEK6dtf7VpBYYB"></i> <a href="/a/RTWgfK47pbhyHWcqEMQUyEK6dtf7VpBYYB" target="_blank">RTWgf...pBYYB</a>
+                          </td>
+                            <td>
+                            <span class="text-success">118101</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          6
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/strob_SH">strob <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RStrobSH68ke1eFmxNehVuJczTEpFX3C4f"></i> <a href="/a/RStrobSH68ke1eFmxNehVuJczTEpFX3C4f" target="_blank">RStro...X3C4f</a>
+                          </td>
+                            <td>
+                            <span class="text-success">107834</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          7
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/and1-89_SH">and1-89 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RUAShFaDNpHixyp7jFZu3EWph1DtC1AHwr"></i> <a href="/a/RUAShFaDNpHixyp7jFZu3EWph1DtC1AHwr" target="_blank">RUASh...1AHwr</a>
+                          </td>
+                            <td>
+                            <span class="text-success">105452</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          8
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/dappvader_SH">dappvader <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RCtyCsJVo6VKmEFmHL9hzoXLtKeoYeZUmK"></i> <a href="/a/RCtyCsJVo6VKmEFmHL9hzoXLtKeoYeZUmK" target="_blank">RCtyC...eZUmK</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100100</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          9
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/ethanquix_SH">ethanquix <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RPbzHrLqaySEiwkyS4BeJgxq8DodLqUV5J"></i> <a href="/a/RPbzHrLqaySEiwkyS4BeJgxq8DodLqUV5J" target="_blank">RPbzH...qUV5J</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          10
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/antonind81_SH">antonind81 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RHDoBZBZNRs2x5WTdmJtrJbfGgCYDRC7c8"></i> <a href="/a/RHDoBZBZNRs2x5WTdmJtrJbfGgCYDRC7c8" target="_blank">RHDoB...RC7c8</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          11
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/etszombi_SH">etszombi <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RP82ogUu9L7BHuUiv7FnXNgDFmQ3J4hmdA"></i> <a href="/a/RP82ogUu9L7BHuUiv7FnXNgDFmQ3J4hmdA" target="_blank">RP82o...4hmdA</a>
+                          </td>
+                            <td>
+                            <span class="text-success">100000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          12
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/jorian_SH">jorian <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RJWsMTusioGR1S9AdQiHkBrKovee5akvpH"></i> <a href="/a/RJWsMTusioGR1S9AdQiHkBrKovee5akvpH" target="_blank">RJWsM...akvpH</a>
+                          </td>
+                            <td>
+                            <span class="text-success">15112</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          13
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/nutellalicka_SH">nutellalicka <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RB47JxCEPrGSDBauDQiKF8dgxqUYMdUhHj"></i> <a href="/a/RB47JxCEPrGSDBauDQiKF8dgxqUYMdUhHj" target="_blank">RB47J...dUhHj</a>
+                          </td>
+                            <td>
+                            <span class="text-success">97</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          14
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/wbpxre150_SH">wbpxre150 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RVj6BhECFnX8T7HV1iXUR2VEZJGsYu2tF3"></i> <a href="/a/RVj6BhECFnX8T7HV1iXUR2VEZJGsYu2tF3" target="_blank">RVj6B...u2tF3</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00050</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          15
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/rz1911_SH">rz1911 <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RU7fwhjNz7Zipfd41PB9TxTCydLttNytHR"></i> <a href="/a/RU7fwhjNz7Zipfd41PB9TxTCydLttNytHR" target="_blank">RU7fw...NytHR</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                          16
+                          </td>
+                          <td>
+                            <span class="text-warning"><strong><a class="text-warning" href="/candidate/starfleet_SH">starfleet <i class="mdi mdi-link text-info icon-small"></i></a></strong></span></td>
+                           <td>
+                            <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RXHsmPgKTpxyLta8pmzR69r45LZeaqu2bU"></i> <a href="/a/RXHsmPgKTpxyLta8pmzR69r45LZeaqu2bU" target="_blank">RXHsm...qu2bU</a>
+                          </td>
+                            <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr>                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div>
+
+         
+          <div class="row mt-5" id="explorer">
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><i class="mdi mdi-wall icon-medium text-info ml-auto"></i> Blocks</h4>
+       <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Height</th>
+                          <th class="text-center">Time</th>
+                           <th class="text-center">Txs</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><a href="/b/093f070dfc5903fa7f393b9733c4758ad6a3764a8f8de039176ed4cad26ee1c2">#4533</a>
+                          </td>
+                          <td>38 mins ago</td>
+                          <td>2</td>
+                        </tr><tr>
+                          <td><a href="/b/094b8f5c1eee2dc61487b50be5e7c3daa1f9024f48b8c72332cecdff25b44c36">#4532</a>
+                          </td>
+                          <td>5 hours ago</td>
+                          <td>2</td>
+                        </tr><tr>
+                          <td><a href="/b/0140842ac99bdb73f87c219196935c34006729ed78615893985e81022a23575a">#4531</a>
+                          </td>
+                          <td>5 hours ago</td>
+                          <td>2</td>
+                        </tr><tr>
+                          <td><a href="/b/0396f1fd329c10bf279303e83102a9f37616993411b8e2f25bc1469bcd6ce515">#4530</a>
+                          </td>
+                          <td>5 hours ago</td>
+                          <td>2</td>
+                        </tr><tr>
+                          <td><a href="/b/01a4a8bb9284d04656ea5fecca9f5c2b3d1427ae606dda22473dfbf1c1e068d6">#4529</a>
+                          </td>
+                          <td>5 hours ago</td>
+                          <td>2</td>
+                        </tr><tr>
+                          <td><a href="/b/03732827c925dde4ff7502d8b3e354e8cd8282cb17c5cea6100db684f80a9013">#4528</a>
+                          </td>
+                          <td>5 hours ago</td>
+                          <td>2</td>
+                        </tr><tr>
+                          <td><a href="/b/0ba9b44fd82d3d4914bc7a1ac5a029501e504ced2349e899b2817c88faa090ff">#4527</a>
+                          </td>
+                          <td>5 hours ago</td>
+                          <td>2</td>
+                        </tr>                      </tbody>
+                    </table>
+                  </div>
+                  <hr>
+                  <div class="text-center"><button type="button" class="btn btn-outline-secondary btn-md"><a href="/blocks">View more</a></button></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title"><i class="mdi mdi-link-variant icon-medium text-warning ml-auto"></i> Recent Votes</h4>
+
+<div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th>Time</th>
+                          <th>Candidate</th>
+                           <th>Region</th>
+                           <th>Txid</th>
+                           <th>Votes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 18, 2020, 3:58 am">38 mins ago</span>
+                          </td>
+                          <td>
+                            <strong>lootz</strong>
+                          </td>
+                          <td>
+                            <span class="text-danger">NA</span>
+                          </td>
+                           <td>
+                            <a href="/t/d87ed196097d31fb2ce236264633ada90f2829f843ffb796d4c574f5592be9ac" target="_blank">d87ed...be9ac</a>
+                          </td>
+                          <td>
+                            <span class="text-success">389.68</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 11:17 pm">5 hours ago</span>
+                          </td>
+                          <td>
+                            <strong>smdmitry</strong>
+                          </td>
+                          <td>
+                            <span class="text-success">AR</span>
+                          </td>
+                           <td>
+                            <a href="/t/ddf22e3fd93d32e5bf828e771de5bd8ac1a303da6b51decbeb2d36428f664c5c" target="_blank">ddf22...64c5c</a>
+                          </td>
+                          <td>
+                            <span class="text-success">3.77</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 11:15 pm">5 hours ago</span>
+                          </td>
+                          <td>
+                            <strong>mrlynch</strong>
+                          </td>
+                          <td>
+                            <span class="text-success">AR</span>
+                          </td>
+                           <td>
+                            <a href="/t/079cc1c9bd58061a9d01c90c00a237e8527a5dd3486e96d4015d701d6ef532a0" target="_blank">079cc...532a0</a>
+                          </td>
+                          <td>
+                            <span class="text-success">276</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 11:15 pm">5 hours ago</span>
+                          </td>
+                          <td>
+                            <strong>chainzilla</strong>
+                          </td>
+                          <td>
+                            <span class="text-danger">NA</span>
+                          </td>
+                           <td>
+                            <a href="/t/3b8d32372cb9be851ef2b5eb166b0c16d0d252f67b98f370c3ded3adc5d45fa7" target="_blank">3b8d3...45fa7</a>
+                          </td>
+                          <td>
+                            <span class="text-success">276</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 11:14 pm">5 hours ago</span>
+                          </td>
+                          <td>
+                            <strong>pbca26</strong>
+                          </td>
+                          <td>
+                            <span class="text-danger">NA</span>
+                          </td>
+                           <td>
+                            <a href="/t/5130cd937f5e0546a1de26638fc0518a3396871ae073aa1fd0a076c46958b7c4" target="_blank">5130c...8b7c4</a>
+                          </td>
+                          <td>
+                            <span class="text-success">276</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 11:13 pm">5 hours ago</span>
+                          </td>
+                          <td>
+                            <strong>draeth</strong>
+                          </td>
+                          <td>
+                            <span class="text-danger">NA</span>
+                          </td>
+                           <td>
+                            <a href="/t/957b4460ff7465cfb708b6833bc392e58d913075fd93eb4ba75b35c74cafbe8b" target="_blank">957b4...fbe8b</a>
+                          </td>
+                          <td>
+                            <span class="text-success">276</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 11:12 pm">5 hours ago</span>
+                          </td>
+                          <td>
+                            <strong>pungocloud</strong>
+                          </td>
+                          <td>
+                            <span class="text-warning">SH</span>
+                          </td>
+                           <td>
+                            <a href="/t/42d1ddca781441727732e69e21125c0545b6dfba7161247c4de4d545a9be7883" target="_blank">42d1d...e7883</a>
+                          </td>
+                          <td>
+                            <span class="text-success">276</span>
+                          </td>
+                        </tr>                      </tbody>
+                    </table>
+                  </div>
+                  <hr>
+ <div class="text-center"><button type="button" class="btn btn-outline-secondary btn-md"><a href="/recentvotes">View more</a></button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+ <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+            <i class="mdi mdi-discord text-primary icon-sm"></i>@MadMaX#0593
+</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-light">
+                        <div class="badge badge-primary">4533 blocks</div>
+            <div class="badge badge-primary ml-3">57 connections</div>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/static/vote2020/vendors/js/vendor.bundle.base.js"></script>
+  <script src="/static/vote2020/vendors/js/vendor.bundle.addons1.js"></script>
+  <script src="/static/vote2020/js/off-canvas.js"></script>
+  <script src="/static/vote2020/js/template.js"></script>
+  <script src="/static/vote2020/js/settings.js"></script>
+    <script src="/static/vote2020/js/tooltips.js"></script>
+    
+    
+ <script>
+
+// Tooltip
+
+$('.cpy-cl').tooltip({
+  trigger: 'click',
+  placement: 'bottom'
+});
+
+function setTooltip(mdi, message) {
+  $(mdi).tooltip('hide')
+    .attr('data-original-title', message)
+    .tooltip('show');
+}
+
+function hideTooltip(mdi) {
+  setTimeout(function() {
+    $(mdi).tooltip('hide');
+  }, 1000);
+}
+
+// Clipboard
+
+var clipboard = new Clipboard('.cpy-cl');
+
+clipboard.on('success', function(e) {
+  setTooltip(e.trigger, 'Copied!');
+  hideTooltip(e.trigger);
+});
+
+clipboard.on('error', function(e) {
+  setTooltip(e.trigger, 'Failed!');
+  hideTooltip(e.trigger);
+});
+
+
+var chart = c3.generate({
+  data: {
+    columns: [
+      ['Percentage of votes', 8.66]
+    ],
+    type: 'gauge',
+  },
+  gauge: {
+  },
+  color: {
+    pattern: ['#60B044'],
+  },
+  size: {
+    height: 85
+  }
+});
+
+
+var rdata = [
+  ["AR", 2.61]
+  , ["EU", 2.35]
+  , ["NA", 2.36]
+  , ["SH", 1.34]
+];
+var rcolors = {
+  "AR" : "#0ACF97"
+  , "EU" : "#13168F"
+  , "NA" : "#ED313A"
+  , "SH" : "#F5982D"
+};
+var rchart = c3.generate({
+  bindto: "#rchart"
+  , data: {
+    columns: rdata
+    , type: "donut"
+    , colors: rcolors
+  }
+  , legend: { show: false}
+  , donut: {title: "Votes"},
+    size: {
+    height: 200
+  }
+});
+
+
+var btn = $('#button');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});
+
+function makeTimer(){var a=new Date("04 May 2020 23:59:59 UTC");a=Date.parse(a)/1e3;var e=new Date,s=a-(e=Date.parse(e)/1e3),n=Math.floor(s/86400),t=Math.floor((s-86400*n)/3600),o=Math.floor((s-86400*n-3600*t)/60),r=Math.floor(s-86400*n-3600*t-60*o);t<"10"&&(t="0"+t),o<"10"&&(o="0"+o),r<"10"&&(r="0"+r),$("#days").html(n+"<span>Day</span>"),$("#hours").html(t+"<span>Hours</span>"),$("#minutes").html(o+"<span>Minutes</span>"),$("#seconds").html(r+"<span>Seconds</span>")}setInterval(function(){makeTimer()},1e3);
+</script>    </body>
+</html>
+

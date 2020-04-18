@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>dudezmobi AR Candidate Profile - Komodo Notarynode election 2020</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152646601-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-152646601-1');
+</script>
+<link rel="stylesheet" href="/static/vote2020/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/static/vote2020/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="/static/vote2020/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="/static/vote2020/css/vertical-layout-dark/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
+  <link rel="shortcut icon" href="/static/img/favicon.ico" />
+  <style>
+.c3-chart-arc .c3-gauge-value{fill:#0acf97}.recvo{border-bottom:1px solid #2a2c40}#button{display:inline-block;background-color:#333;width:50px;height:50px;text-align:center;border-radius:4px;position:fixed;bottom:30px;right:30px;transition:background-color .3s,opacity .5s,visibility .5s;opacity:0;visibility:hidden;z-index:1000}#button:hover{cursor:pointer;background-color:#ff9800}#button:active{background-color:#555}#button.show{opacity:1;visibility:visible}.maindiv{display:inline-block;line-height:1;padding:2px;font-size:40px;text-align:center}.maindiv span{display:block;font-size:10px;color:#fff}#days{font-size:15px;color:#db4844}#hours{font-size:15px;color:#f07c22}#minutes{font-size:15px;color:#f6da74}#seconds{font-size:15px;color:#abcd58}
+.time_agob {
+      border-bottom: 1px dotted #6a5fff;
+      cursor: pointer;
+}
+.vote_count {
+      font-size: 1.275rem;
+}
+.vote_pos {
+      font-size: 11px;
+      position: relative;
+bottom: 13px;
+}
+.c3-chart-arcs .c3-chart-arcs-background {
+    fill: #8e8686;
+    stroke: none;
+}
+
+.c3-chart-arc path {
+    stroke: #808080;
+}
+</style>
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/"><img src="/static/logo2020.png" alt="Komodo Vote 2020"/></a>
+        <a class="navbar-brand brand-logo-mini" href="/"><img src="/static/logo2020.png" alt="komodo Vote 2020"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end justify-content-lg-start">
+        <ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-home text-info icon-md"></i> <a class="text-light" href="/">Results</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-refresh text-success icon-md"></i> <a class="text-light" href="/recentvotes">Recent Votes</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-trophy text-warning icon-md"></i> <a class="text-light" href="/stats/richlist">Rich List</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+        <button type="button" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-chevron-right text-danger icon-md"></i> <a class="text-light" href="/#explorer">Explorer</a></button>
+        </ul><ul class="navbar-nav mr-lg-2">
+<li class="nav-item dropdown">
+<button type="button" class="btn btn-inverse-primary btn-fw dropdown-toggle text-light"
+id="notificationDropdown" data-toggle="dropdown" aria-expanded="false">
+<i class="mdi mdi-link text-success icon-md"></i>More...</button>
+ <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list bg-primary" aria-labelledby="notificationDropdown">
+                        <h3 class="dropdown-header text-warning">More</h3>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-light" href="/#explorer"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Explorer</a>
+                        <a class="dropdown-item text-light" href="/stats/richlist2"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Candidate Rich list</a>
+                        <div class="dropdown-divider"></div>
+                        <h3 class="dropdown-header text-warning">Links</h3>
+                        <a class="dropdown-item text-light" href="https://vote.dexstats.info/" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Dexstats Vote Stats</a>
+                        <a class="dropdown-item text-light" href="https://dexstats.info/testnet.php" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Testnet</a>
+                        <a class="dropdown-item text-light" href="https://vote.kmdexplorer.io/" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Explorer 1</a>
+                        <a class="dropdown-item text-light" href="https://vote2020.explorer.dexstats.info/" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Explorer 2</a>
+                        <a class="dropdown-item text-light" href="https://github.com/KomodoPlatform/dPoW/blob/dev/doc/bible.md" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> Notary Node Bible</a>
+                        <a class="dropdown-item text-light" href="https://github.com/KomodoPlatform/NotaryNodes/tree/master/season4/candidates" target="_blank"><i class="mdi mdi-chevron-right text-secondary icon-md"></i> NN Github</a>
+                      </div>
+<!--<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <a class="dropdown-item">
+                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                </p>
+                <span class="badge badge-pill badge-warning float-right">View all</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-information mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium">Application Error</h6>
+                  <p class="font-weight-light small-text mb-0">
+                    Just now
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="mdi mdi-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium">Settings</h6>
+                  <p class="font-weight-light small-text mb-0">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="mdi mdi-account-box mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-medium">New user registration</h6>
+                  <p class="font-weight-light small-text mb-0">
+                    2 days ago
+                  </p>
+                </div>
+              </a>
+            </div>-->
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <form method="post" action="/search">
+              <li class="nav-item nav-search d-none d-lg-block">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="search">
+                      <i class="mdi mdi-magnify"></i>
+                    </span>
+                  </div>
+                  <input type="text" name="q" size="36" class="form-control" placeholder="search by block height/hash, txid, address" aria-label="search" aria-describedby="search">
+                </div>
+              </li>
+         </form>
+        </ul>
+      </div>
+    </nav>
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+    <div class="container-fluid page-body-wrapper">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+           <li><div id="chart"></div><div class="text-center">Total Votes: 119,242,816<br/>Votes Cast: 10,327,951<br/><div id="timer" class="text-center">
+  <div class="maindiv" id="days"></div>
+  <div class="maindiv" id="hours"></div>
+  <div class="maindiv"id="minutes"></div>
+  <div class="maindiv" id="seconds"></div>
+                </div></div></li>        <div class="dropdown-divider"></div>
+          <li class="nav-item"><h4 class="card-title text-primary pl-3 text-center"><i class="mdi mdi-vote text-primary icon-md"></i>Region Stats</h4>
+          </li>
+           <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#AR" class="text-success">AR</a>
+                        <p class="text-muted">3,117,251</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                     <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#EU" class="text-info">EU</a>
+                        <p class="text-muted">2,805,983</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                     <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#NA" class="text-danger">NA</a>
+                        <p class="text-muted">2,810,568</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                     <li class="nav-item"><div class="d-flex justify-content-between pl-4 pr-4">
+                        <a href="/#SH" class="text-warning">SH</a>
+                        <p class="text-muted">1,594,149</p>
+                      </div>
+                       <div class="recvo"></div>
+          </li>
+                               <li class="nav-item">        <div id="rchart"></div>
+                       <div class="recvo"></div>
+          </li>
+        </ul>
+      </nav><style>
+</style>
+<a id="button"><i class="mdi mdi-chevron-up text-light icon-md"></i></a>
+      <div class="main-panel">
+        <div class="content-wrapper">
+
+<div class="row">
+						<div class="col-md-5 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card">
+								<div class="card-body">
+								<div class="d-flex align-items-start justify-content-between mb-3">
+								<h2 class="text-danger">dudezmobi</h2>								<span class="badge badge-pill badge-primary vote_count">273720 Votes</span>
+									</div>
+									<p class="mt-2 card-text">
+										<span class="text-muted mb-0">Region:</span> <span class="text-warning mb-0"><b>Asia-Russia [AR]</b></span>
+									</p>
+									<p class="mt-2 card-text">
+									Address: <a class="text-success" href="/a/RA7VoAW811sZS6CPaM3CwS4VyNyLzmNcKy">RA7VoAW811sZS6CPaM3CwS4VyNyLzmNcKy</a> <i class="cpy-cl mdi mdi-content-copy icon-small text-primary ml-auto poi" data-clipboard-text="RA7VoAW811sZS6CPaM3CwS4VyNyLzmNcKy"></i>
+									</p>
+									<p class="mt-2 card-text">
+									Proposal: <a class="text-success" href="https://github.com/KomodoPlatform/NotaryNodes/tree/master/season4/candidates/dudezmobi" target="_blank"><i class="mdi mdi-link text-info icon-small"></i> Github</a>
+</p>
+
+									<div class="border-top pt-3 text-center">
+										<div class="row">
+											<div class="col-4">
+												<p><span class="h6 text-light">4</span> <small><i class="mdi mdi-arrow-left-right icon-small text-secondary ml-auto" title="24 hour change"></i></small></p>
+												<p><i class="mdi mdi-trophy icon-small text-warning ml-auto"></i> Position</p>
+											</div>
+											<div class="col-4">
+												<h6 class="text-light">273720</h6>
+												<p>Total Votes</p>
+											</div>
+											<div class="col-4">
+												<h6 class="text-light">0</h6>
+												<p>Votes Today</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Daily Votes</h4>
+
+<div id="daily-votes" style="height: 200px;"></div>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+					
+<div class="row mt-4">
+                        <div class="col-12">
+                        
+           <div class="card">
+            <div class="card-body">
+              <h3 class="card-title text-info">Vote Transactions</h3>
+              <div class="row">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table id="recent-votes" class="table hover">
+                      <thead>
+                        <tr>
+                         <th>Time</th>
+                           <th class="no-sort">Txid</th>
+                           <th>Votes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      
+ <tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 17, 2020, 5:44 am">22 hours ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/fa6c4116464b18f08ae2821346bb5f9613d99afa6b16c1e8f499a9c188dc1402" target="_blank">fa6c4116464b18f08ae282...16c1e8f499a9c188dc1402</a>
+                          </td>
+                          <td>
+                            <span class="text-success">1288.55</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 16, 2020, 2:28 pm">1 day ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/598572f051e131919260010275365013bb2f1fad1ff8a3baa0fcd5837bc8f69e" target="_blank">598572f051e13191926001...f8a3baa0fcd5837bc8f69e</a>
+                          </td>
+                          <td>
+                            <span class="text-success">155</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 16, 2020, 5:09 am">1 day ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/5c0c00bfcc03b5df108c81ae09147e3f79e2fda60bd408a03aa7d0cf8a3dc550" target="_blank">5c0c00bfcc03b5df108c81...d408a03aa7d0cf8a3dc550</a>
+                          </td>
+                          <td>
+                            <span class="text-success">2022.41</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 16, 2020, 4:43 am">1 day ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/d45c9f09480f740c246915a6c995ee69da0b8cc6ff9cdc26c07782277ff315c3" target="_blank">d45c9f09480f740c246915...9cdc26c07782277ff315c3</a>
+                          </td>
+                          <td>
+                            <span class="text-success">250000</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 15, 2020, 11:01 pm">2 days ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/65c978071ee80bd670c33e3c84c148938993235ca1b1269f743217c968b3a802" target="_blank">65c978071ee80bd670c33e...b1269f743217c968b3a802</a>
+                          </td>
+                          <td>
+                            <span class="text-success">2.04</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 14, 2020, 8:38 pm">3 days ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/c72d770c219785c358511695ae86be26e5fa32af15280277e5c27082f0563528" target="_blank">c72d770c219785c3585116...280277e5c27082f0563528</a>
+                          </td>
+                          <td>
+                            <span class="text-success">252.61</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 13, 2020, 2:33 pm">4 days ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/ed812731913b350a061d513f8c5acfc2671b7d2a11123f096f7e0ff92d700257" target="_blank">ed812731913b350a061d51...123f096f7e0ff92d700257</a>
+                          </td>
+                          <td>
+                            <span class="text-success">0.00010</span>
+                          </td>
+                        </tr><tr>
+                          <td>
+                           <span class="time_agob" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-warning" title="" data-original-title="April 13, 2020, 1:52 pm">4 days ago</span>
+                          </td>
+                           <td>
+                            <a href="/t/83e8acfcc56aa54d85defaa0964cfc15dd8766344652fff8a43cbdbc307db3e5" target="_blank">83e8acfcc56aa54d85defa...52fff8a43cbdbc307db3e5</a>
+                          </td>
+                          <td>
+                            <span class="text-success">20000</span>
+                          </td>
+                        </tr>                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>                       
+                        
+            </div>
+          </div>					
+					
+
+        </div>
+ <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+            <i class="mdi mdi-discord text-primary icon-sm"></i>@MadMaX#0593
+</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-light">
+                        <div class="badge badge-primary">4533 blocks</div>
+            <div class="badge badge-primary ml-3">57 connections</div>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/static/vote2020/vendors/js/vendor.bundle.base.js"></script>
+  <script src="/static/vote2020/vendors/js/vendor.bundle.addons1.js"></script>
+  <script src="/static/vote2020/js/off-canvas.js"></script>
+  <script src="/static/vote2020/js/template.js"></script>
+  <script src="/static/vote2020/js/settings.js"></script>
+    <script src="/static/vote2020/js/tooltips.js"></script>
+    
+    
+ <script>
+
+// Tooltip
+
+$('.cpy-cl').tooltip({
+  trigger: 'click',
+  placement: 'bottom'
+});
+
+function setTooltip(mdi, message) {
+  $(mdi).tooltip('hide')
+    .attr('data-original-title', message)
+    .tooltip('show');
+}
+
+function hideTooltip(mdi) {
+  setTimeout(function() {
+    $(mdi).tooltip('hide');
+  }, 1000);
+}
+
+// Clipboard
+
+var clipboard = new Clipboard('.cpy-cl');
+
+clipboard.on('success', function(e) {
+  setTooltip(e.trigger, 'Copied!');
+  hideTooltip(e.trigger);
+});
+
+clipboard.on('error', function(e) {
+  setTooltip(e.trigger, 'Failed!');
+  hideTooltip(e.trigger);
+});
+
+
+var chart = c3.generate({
+  data: {
+    columns: [
+      ['Percentage of votes', 8.66]
+    ],
+    type: 'gauge',
+  },
+  gauge: {
+  },
+  color: {
+    pattern: ['#60B044'],
+  },
+  size: {
+    height: 85
+  }
+});
+
+
+var rdata = [
+  ["AR", 2.61]
+  , ["EU", 2.35]
+  , ["NA", 2.36]
+  , ["SH", 1.34]
+];
+var rcolors = {
+  "AR" : "#0ACF97"
+  , "EU" : "#13168F"
+  , "NA" : "#ED313A"
+  , "SH" : "#F5982D"
+};
+var rchart = c3.generate({
+  bindto: "#rchart"
+  , data: {
+    columns: rdata
+    , type: "donut"
+    , colors: rcolors
+  }
+  , legend: { show: false}
+  , donut: {title: "Votes"},
+    size: {
+    height: 200
+  }
+});
+
+
+var btn = $('#button');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});
+
+function makeTimer(){var a=new Date("04 May 2020 23:59:59 UTC");a=Date.parse(a)/1e3;var e=new Date,s=a-(e=Date.parse(e)/1e3),n=Math.floor(s/86400),t=Math.floor((s-86400*n)/3600),o=Math.floor((s-86400*n-3600*t)/60),r=Math.floor(s-86400*n-3600*t-60*o);t<"10"&&(t="0"+t),o<"10"&&(o="0"+o),r<"10"&&(r="0"+r),$("#days").html(n+"<span>Day</span>"),$("#hours").html(t+"<span>Hours</span>"),$("#minutes").html(o+"<span>Minutes</span>"),$("#seconds").html(r+"<span>Seconds</span>")}setInterval(function(){makeTimer()},1e3);
+</script>    <script>
+$(function() {
+  'use strict';
+  if ($('#daily-votes').length) {
+ Morris.Bar({
+  barGap:0.1,
+  barSizeRatio:0.4,
+  grid:false,
+  axes:true,
+  element: 'daily-votes',
+  data: [{ y: "2020-04-13", a: 20000},{ y: "2020-04-14", a: 252.61},{ y: "2020-04-15", a: 2.04},{ y: "2020-04-16", a: 252177.41},{ y: "2020-04-17", a: 1288.55},{ y: "2020-04-18", a: 0}],
+  xkey: 'y',
+  ykeys: ['a'],
+  labels: ['Tickets'],
+  gridTextSize: 14,
+  resize: true,
+    hoverCallback: function (index, options, content, row) {
+  return "<span class=\"text-info\"><b>Date: "+ row.y +" </b></span><br/> <span class=\"text-dark\"><b>" + row.a + " Votes</b></span>";
+},
+  barColors: ['#0b62a4', '#F36368', '#76C1FA', '#FABA66'],
+  hideHover: true
+});
+  }
+});
+
+(function($) {
+  'use strict';
+  $(function() {
+    $('#recent-votes').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ],
+      "iDisplayLength": 10,
+      "order": [],
+      "language": {
+        search: ""
+      }
+    });
+
+    $('#recent-votes').each(function() {
+      var datatable = $(this);
+      var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+      search_input.attr('placeholder', 'Search');
+      search_input.removeClass('form-control-sm');
+      var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+      length_sel.removeClass('form-control-sm');
+    });
+  });
+})(jQuery);
+</script>
+</body>
+
+</html>
