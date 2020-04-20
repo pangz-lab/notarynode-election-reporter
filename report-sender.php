@@ -72,12 +72,14 @@ function sendNewVoteReport($reportFomat, $url, $setting) {
 }
 
 function hasNewVote() {
-	return (saveMostRecentVote([REPORTER_SETTING["CANDIDATE_INFO"]]) !== false);
+	return (saveMostRecentVote([REPORTER_SETTING["CANDIDATE_INFO"]]));
 }
 
 function saveMostRecentVote($setting) {
 	$extractedData  = extractPageData($setting);
-	$recentVote     = $extractedData["candidate_info"]["recentVotes"][0] ?? [""];
+	$recentVote     = $extractedData["candidate_info"]["recentVotes"][0] ?? ['',''];
+	$recentVote     = array_merge([], $recentVote);
+	unset($recentVote[0]);
 	$recentVoteHash = md5(implode("XX", $recentVote));
 	$currentHash 	= "";
 	
@@ -89,20 +91,21 @@ function saveMostRecentVote($setting) {
 	
 	$currentHash = file_get_contents(RECENT_VOTE_LOG);
 	if($currentHash !== $recentVoteHash) {
-		return file_put_contents(RECENT_VOTE_LOG, $recentVoteHash);
+		file_put_contents(RECENT_VOTE_LOG, $recentVoteHash);
+		return true;
 	}
 	
 	return false;
 }
 
-function sendMessage($url, $data) {
+function sendMessage($url, $data, $httpHeader = array("Content-Type: application/json")) {
 	$payload = json_encode($data);
 	$ch      = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeader);
 	 
 	$result = curl_exec($ch);	 
 	return curl_close($ch);
